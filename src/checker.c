@@ -6,7 +6,7 @@
 /*   By: wlin <wlin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/27 13:06:09 by wlin              #+#    #+#             */
-/*   Updated: 2017/08/02 13:44:47 by wlin             ###   ########.fr       */
+/*   Updated: 2017/08/07 12:46:27 by wlin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_error(char const *s, int fd)
 	return (1);
 }
 
-static void print_stack(t_stack *s, char c)
+void print_stack(t_stack *s, char c)
 {
 	int i = s->top;
 	while (i > -1)
@@ -118,31 +118,31 @@ int read_instr(t_stack *a, t_stack *b)
 	return (1);
 }
 
-int main(int argc, char **argv)
-{
-	t_stack a;
-	t_stack b;
-	int n;
-
-	if (!(argc > 1))
-		return (0);
-	init_stack(&a, --argc);
-	init_stack(&b, argc);
-	while (argc > 0)
-	{
-		if (!valid_int(argv[argc]))
-			return (ft_error("Error", 2));
-		n = ft_atoi(argv[argc]);
-		if (check_dup(&a, n))
-			return (ft_error("Error", 2));
-		push(&a, n);
-		--argc;
-	}
-	if (!read_instr(&a, &b))
-		return (ft_error("Error\n", 2));
-	if (is_sorted(&a) && is_empty(&b))
-		puts("OK");
-	else
-		puts("KO");
-	return (0);
-}
+// int main(int argc, char **argv)
+// {
+// 	t_stack a;
+// 	t_stack b;
+// 	int n;
+//
+// 	if (!(argc > 1))
+// 		return (0);
+// 	init_stack(&a, --argc);
+// 	init_stack(&b, argc);
+// 	while (argc > 0)
+// 	{
+// 		if (!valid_int(argv[argc]))
+// 			return (ft_error("Error", 2));
+// 		n = ft_atoi(argv[argc]);
+// 		if (check_dup(&a, n))
+// 			return (ft_error("Error", 2));
+// 		push(&a, n);
+// 		--argc;
+// 	}
+// 	if (!read_instr(&a, &b))
+// 		return (ft_error("Error\n", 2));
+// 	if (is_sorted(&a) && is_empty(&b))
+// 		puts("OK");
+// 	else
+// 		puts("KO");
+// 	return (0);
+// }

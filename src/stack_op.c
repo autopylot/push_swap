@@ -6,7 +6,7 @@
 /*   By: wlin <wlin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/26 14:43:58 by wlin              #+#    #+#             */
-/*   Updated: 2017/08/02 13:26:16 by wlin             ###   ########.fr       */
+/*   Updated: 2017/08/07 15:07:41 by wlin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,11 +76,8 @@ int	rotate(t_stack *s)
 	if (s->top > 0)
 	{
 		tmp = s->stack[s->top];
-		while (i > -1)
-		{
+		while (--i > -1)
 			ft_memmove(s->stack + (i + 1), s->stack + i, sizeof(int));
-			--i;
-		}
 		s->stack[0] = tmp;
 	}
 	return (1);
