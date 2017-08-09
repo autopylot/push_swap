@@ -6,67 +6,13 @@
 /*   By: wlin <wlin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/02 13:48:44 by wlin              #+#    #+#             */
-/*   Updated: 2017/08/07 14:54:03 by wlin             ###   ########.fr       */
+/*   Updated: 2017/08/09 13:56:55 by wlin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-//check a top and swap if top < top -1
-void check_top(t_stack *s)
-{
-	if (s->top > 0)
-	{
-		if (s->stack[s->top - 1] < s->stack[s->top])
-			swap(s);
-	}
-}
-
-//check if stack is ordered and just needed to be rotated
-int is_ordered(t_stack *s)
-{
-	int min_loc;
-	int n;
-
-	n = s->top;
-	min_loc = min_stack(s, s->top);
-	while (n-- > 0)
-	{
-		if (min_loc == 0)
-		{
-			if (s->stack[min_loc] < s->stack[s->top])
-				min_loc = s->top;
-			else
-				return (0);
-		}
-		else
-		{
-			if (s->stack[min_loc] < s->stack[min_loc - 1])
-				--min_loc;
-			else
-				return (0);
-		}
-	}
-	return (1);
-}
-
-//rotoates element at pos to top
-void roto_top(t_stack *s, int n, char c)
-{
-	int i;
-
-	i = -1;
-	if (c == 'T')
-	{
-		while (++i < n)
-			rotate(s);
-	}
-	if (c == 'B')
-		while (++i < n)
-			rev_rotate(s);
-}
-
-int get_numbers(t_stack *a, t_stack *b, int argc, char **argv)
+static	int get_numbers(t_stack *a, t_stack *b, int argc, char **argv)
 {
 	int n;
 
@@ -95,7 +41,6 @@ int main(int argc, char **argv)
 {
 	t_stack a;
 	t_stack b;
-	int n;
 
 	if (!(argc > 1))
 		return (0);
@@ -103,10 +48,21 @@ int main(int argc, char **argv)
 	init_stack(&b, argc);
 	if (get_numbers(&a, &b, argc, argv))
 		return (1);
-	if (a.top < 9)
-		bubblesort(&a);
-	print_stack(&a, 'a');
-	print_stack(&b, 'b');
-	printf("Sorted: %d\n", is_sorted(&a));
+	while (a.top > -1)
+	{
+		if (a.top > 1)
+			quicksort(&a, &b);
+		else
+		{
+			if (a.stack[a.top] > a.stack[a.top - 1])
+				swap(&a, 'a');
+			while (!is_empty(&b))
+				move(&b, &a, 'a');
+			break ;
+		}
+	}
+	// print_stack(&a, 'a');
+	// print_stack(&b, 'b');
+	//printf("Sorted: %d\n", is_sorted(&a));
 	return (0);
 }
