@@ -6,7 +6,7 @@
 /*   By: wlin <wlin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/27 13:06:09 by wlin              #+#    #+#             */
-/*   Updated: 2017/08/09 14:47:51 by wlin             ###   ########.fr       */
+/*   Updated: 2017/08/10 15:10:15 by wlin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@ int main(int argc, char **argv)
 		return (1);
 	init_stack(&a, --argc);
 	init_stack(&b, argc);
+	if (argc == 2)
+		
+	else
 	while (argc > 0)
 	{
 		if (!valid_int(argv[argc]))

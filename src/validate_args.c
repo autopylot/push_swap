@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   valid_args.c                                       :+:      :+:    :+:   */
+/*   validate_args.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wlin <wlin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/09 10:36:16 by wlin              #+#    #+#             */
-/*   Updated: 2017/08/09 12:48:46 by wlin             ###   ########.fr       */
+/*   Updated: 2017/08/10 14:18:24 by wlin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,24 @@ int exe_instr(char *instr, t_stack *a, t_stack *b)
 		return (rev_rotate(b, 'q'));
 	return (0);
 }
+
+int get_numbers(t_stack *a, t_stack *b, int argc, char **argv)
+{
+	int n;
+
+	while (argc > 0)
+	{
+		if (!valid_int(argv[argc]))
+			return (ft_error("Error", 2));
+		n = ft_atoi(argv[argc]);
+		if (check_dup(a, n))
+			return (ft_error("Error", 2));
+		push(a, n);
+		--argc;
+	}
+	return (0);
+}
+
 
 int read_instr(t_stack *a, t_stack *b)
 {

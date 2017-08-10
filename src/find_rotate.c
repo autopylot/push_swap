@@ -6,7 +6,7 @@
 /*   By: wlin <wlin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/08 14:53:48 by wlin              #+#    #+#             */
-/*   Updated: 2017/08/09 13:56:33 by wlin             ###   ########.fr       */
+/*   Updated: 2017/08/10 15:10:14 by wlin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,3 +83,7 @@ void	roto_next(t_stack *s, int pos, char c)
 		while (s->stack[s->top] != next)
 			rev_rotate(s, c);
 }
+
+
+// rotate both stack if they can move in same directions
+// must be able to read in from a single string

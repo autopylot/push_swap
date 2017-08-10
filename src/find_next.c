@@ -6,14 +6,14 @@
 /*   By: wlin <wlin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/07 11:04:53 by wlin              #+#    #+#             */
-/*   Updated: 2017/08/09 14:44:07 by wlin             ###   ########.fr       */
+/*   Updated: 2017/08/10 13:56:45 by wlin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 //returns max value or index
-int				find_max(t_stack s, int len, char c)
+int				find_max(t_stack *s, int len, char c)
 {
 	int max;
 	int ind;
@@ -21,15 +21,15 @@ int				find_max(t_stack s, int len, char c)
 	ind = -1;
 	if (len == 0)
 		return (0);
-	else if (len < 0)
+	else if (len == -1)
 		return (-1);
-	max = s.stack[s.top];
+	max = s->stack[len];
 	while (--len > -1)
 	{
-		if (s.stack[size] > max)
+		if (s->stack[len] > max)
 		{
-			max = s->stack[size];
-			ind = size;
+			max = s->stack[len];
+			ind = len;
 		}
 	}
 	if (c == 'I')
@@ -44,10 +44,10 @@ int				find_min(t_stack *s, int len, char c)
 	int ind;
 
 	ind = -1;
-	// if (size == 0)
-	// 	return (0);
-	// else if (size < 0)
-	// 	return (-1);
+	if (len == 0)
+		return (0);
+	else if (len == -1)
+		return (-1);
 	min = s->stack[len];
 	while (--len > -1)
 	{
@@ -55,16 +55,10 @@ int				find_min(t_stack *s, int len, char c)
 		{
 			min = s->stack[len];
 			ind = len;
-			// printf("min val: %d\n", s->stack[len]);
-			// printf("index of min: %d\n", len);
 		}
 	}
-	//printf("%d\n", ind);
 	if (c == 'I')
-	{
-		//puts("exiting here");
 		return ((ind == -1) ? s->top : ind);
-	}
 	return (min);
 }
 
@@ -96,7 +90,7 @@ int				next_sort(t_stack *s, int pivot, char c)
 	bot = 0;
 	while (top > bot)
 	{
-		if (s->stack[top] <= pivot)
+		if (s->stack[top] < pivot)
 			return (c == 'I' ? top : s->stack[top]);
 		else if (s->stack[bot] <= pivot)
 			return (c == 'I' ? bot : s->stack[bot]);

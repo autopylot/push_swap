@@ -6,7 +6,7 @@
 /*   By: wlin <wlin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/02 13:48:44 by wlin              #+#    #+#             */
-/*   Updated: 2017/08/09 13:56:55 by wlin             ###   ########.fr       */
+/*   Updated: 2017/08/10 14:09:35 by wlin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,7 @@ int main(int argc, char **argv)
 			break ;
 		}
 	}
-	// print_stack(&a, 'a');
-	// print_stack(&b, 'b');
+	print_stack(&a, 'a');
 	//printf("Sorted: %d\n", is_sorted(&a));
 	return (0);
 }
