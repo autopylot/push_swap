@@ -6,11 +6,12 @@
 #    By: wlin <wlin@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/07/28 13:09:11 by wlin              #+#    #+#              #
-#    Updated: 2017/08/02 12:11:43 by wlin             ###   ########.fr        #
+#    Updated: 2017/08/10 13:29:42 by wlin             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = checker
+CHECKER = checker
+PUSH_SWAP = push_swap
 
 CC = gcc
 # CFLAGS = -Wall -Wextra -Werror
@@ -21,22 +22,44 @@ SRC_DIR = src/
 BUILD_DIR = build/
 INC_DIR = include/
 
-SRC_FILE = \
-stack_op \
-checker
+CHECKER_FILES = \
+checker \
+stack_op1 \
+stack_op2 \
+validate_args
+
+CHECKER_SRC = \
+$(addprefix $(SRC_DIR), $(addsuffix .c, $(CHECKER_FILES)))
+
+CHECKER_OBJ = \
+$(addprefix $(BUILD_DIR), $(addsuffix .o, $(CHECKER_FILES)))
+
+PUSH_SWAP_FILES = \
+push_swap \
+sort_algorithms \
+find_next \
+find_rotate \
+find_median \
+stack_op1 \
+stack_op2 \
+validate_args
 
 
-SRC = \
-$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILE)))
+PUSH_SWAP_SRC = \
+$(addprefix $(SRC_DIR), $(addsuffix .c, $(PUSH_SWAP_FILES)))
 
-OBJ = \
-$(addprefix $(BUILD_DIR), $(addsuffix .o, $(SRC_FILE)))
+PUSH_SWAP_OBJ = \
+$(addprefix $(BUILD_DIR), $(addsuffix .o, $(PUSH_SWAP_FILES)))
 
-all: $(NAME)
+all:
 
-$(NAME):  $(OBJ) $(LIBFT)
-	@$(CC) $(CFLAGS) $(OBJ) -o $@ -I libft/libft.h -L./libft -lft
-	@echo "\033[32mBinary \033[1;32m$(NAME)\033[1;0m\033[32m created.\033[0m"
+$(PUSH_SWAP): $(PUSH_SWAP_OBJ) $(LIBFT)
+	@$(CC) $(CFLAGS) $(PUSH_SWAP_OBJ) -o $@ -I libft/libft.h -L./libft -lft
+	@echo "\033[32mExecutable \033[1;32m$(PUSH_SWAP)\033[1;0m\033[32m created.\033[0m"
+
+$(CHECKER):  $(CHECKER_OBJ) $(LIBFT)
+	@$(CC) $(CFLAGS) $(CHECKER_OBJ) -o $@ -I libft/libft.h -L./libft -lft
+	@echo "\033[32mExecutable \033[1;32m$(CHECKER)\033[1;0m\033[32m created.\033[0m"
 
 $(BUILD_DIR)%.o: $(SRC_DIR)%.c $(BUILD_DIR)
 	@$(CC) $(CFLAGS) -c $< -I $(INC_DIR) -o $@
