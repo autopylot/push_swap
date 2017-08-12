@@ -6,28 +6,11 @@
 /*   By: wlin <wlin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/02 13:48:44 by wlin              #+#    #+#             */
-/*   Updated: 2017/08/10 14:09:35 by wlin             ###   ########.fr       */
+/*   Updated: 2017/08/11 17:15:47 by wlin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-static	int get_numbers(t_stack *a, t_stack *b, int argc, char **argv)
-{
-	int n;
-
-	while (argc > 0)
-	{
-		if (!valid_int(argv[argc]))
-			return (ft_error("Error", 2));
-		n = ft_atoi(argv[argc]);
-		if (check_dup(a, n))
-			return (ft_error("Error", 2));
-		push(a, n);
-		--argc;
-	}
-	return (0);
-}
 
 /*
 Program driver
@@ -42,26 +25,36 @@ int main(int argc, char **argv)
 	t_stack a;
 	t_stack b;
 
-	if (!(argc > 1))
-		return (0);
-	init_stack(&a, --argc);
-	init_stack(&b, argc);
-	if (get_numbers(&a, &b, argc, argv))
+	if (argc < 2)
 		return (1);
-	while (a.top > -1)
+	else if (argc == 2)
 	{
-		if (a.top > 1)
+		if (!parse_nstring(&a, &b, argv[1]))
+			return (1);
+	}
+	else
+	{
+		init_stack(&a, --argc);
+		init_stack(&b, argc);
+		if (!parse_nparams(&a, &b, argc, argv))
+			return (1);
+	}
+	while (!is_sorted(&a))
+	{
+		if (a.top > 5)
 			quicksort(&a, &b);
 		else
 		{
-			if (a.stack[a.top] > a.stack[a.top - 1])
-				swap(&a, 'a');
+			
+
+
+			roto_next(&b, find_max(&b, b.top, 'I'), 'b');
 			while (!is_empty(&b))
 				move(&b, &a, 'a');
 			break ;
 		}
 	}
-	print_stack(&a, 'a');
+	//print_stack(&a, 'a');
 	//printf("Sorted: %d\n", is_sorted(&a));
 	return (0);
 }

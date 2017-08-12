@@ -6,7 +6,7 @@
 /*   By: wlin <wlin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/26 14:43:58 by wlin              #+#    #+#             */
-/*   Updated: 2017/08/09 13:00:32 by wlin             ###   ########.fr       */
+/*   Updated: 2017/08/11 13:37:29 by wlin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	init_stack(t_stack *s, int n)
 {
 	s->top = -1;
-	s->size = n;
 	s->stack = (int*)malloc(sizeof(int) * n);
 }
 

@@ -6,14 +6,14 @@
 /*   By: wlin <wlin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/10 12:35:08 by wlin              #+#    #+#             */
-/*   Updated: 2017/08/10 13:39:01 by wlin             ###   ########.fr       */
+/*   Updated: 2017/08/11 15:25:43 by wlin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //#include "push_swap.h"
 #include <stdio.h>
 
-void swap_ele(int *a, int *b)
+static	void swap_ele(int *a, int *b)
 {
 	int t;
 
@@ -22,7 +22,7 @@ void swap_ele(int *a, int *b)
 	*b = t;
 }
 
-int	partition(int *arr, int low, int high)
+static	int	partition(int *arr, int low, int high)
 {
 	int pivot;
 	int i;
@@ -44,7 +44,7 @@ int	partition(int *arr, int low, int high)
 	return (i + 1);
 }
 
-void qiksort(int *arr, int start, int end)
+static void qiksort(int *arr, int start, int end)
 {
 	int part;
 

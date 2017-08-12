@@ -6,7 +6,7 @@
 /*   By: wlin <wlin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/07 11:04:53 by wlin              #+#    #+#             */
-/*   Updated: 2017/08/10 13:56:45 by wlin             ###   ########.fr       */
+/*   Updated: 2017/08/11 15:40:02 by wlin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int				find_insert(int n, t_stack *s)
 }
 
 // find next element smaller than pivot with least steps
-int				next_sort(t_stack *s, int pivot, char c)
+int				find_next(t_stack *s, int pivot, char c)
 {
 	int top;
 	int bot;

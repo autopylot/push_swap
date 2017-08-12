@@ -1,74 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate_args.c                                    :+:      :+:    :+:   */
+/*   read_instr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wlin <wlin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/09 10:36:16 by wlin              #+#    #+#             */
-/*   Updated: 2017/08/10 14:18:24 by wlin             ###   ########.fr       */
+/*   Updated: 2017/08/11 15:52:04 by wlin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	ft_error(char const *s, int fd)
-{
-	ft_putstr_fd(s, fd);
-	write(fd, "\n", 1);
-	return (1);
-}
-
-void print_stack(t_stack *s, char c)
-{
-	int i = s->top;
-	while (i > -1)
-	{
-		printf("[%d] %d\n", i, s->stack[i]);
-		if (i == 0)
-			printf("[Stack %c]\n", c);
-		--i;
-	}
-}
-
-int valid_int(char *num)
-{
-	int i;
-
-	i = 0;
-	while (num[i])
-	{
-		if (i == 0 && !ft_isdigit(num[i]))
-		{
-			if (num[i] == '-')
-			 	++i;
-			else
-				return (0);
-		}
-		else if (ft_isdigit(num[i]))
-			++i;
-		else
-			return (0);
-	}
-	return (1);
-}
-
-int check_dup(t_stack *s, int n)
-{
-	int i;
-
-	i = 0;
-	if (s->top > -1)
-	{
-		while (i <= s->top)
-		{
-			if (s->stack[i++] == n)
-				return (1);
-		}
-		return (0);
-	}
-	return (0);
-}
 
 int exe_instr(char *instr, t_stack *a, t_stack *b)
 {
@@ -97,24 +39,6 @@ int exe_instr(char *instr, t_stack *a, t_stack *b)
 	return (0);
 }
 
-int get_numbers(t_stack *a, t_stack *b, int argc, char **argv)
-{
-	int n;
-
-	while (argc > 0)
-	{
-		if (!valid_int(argv[argc]))
-			return (ft_error("Error", 2));
-		n = ft_atoi(argv[argc]);
-		if (check_dup(a, n))
-			return (ft_error("Error", 2));
-		push(a, n);
-		--argc;
-	}
-	return (0);
-}
-
-
 int read_instr(t_stack *a, t_stack *b)
 {
 	char *line;
@@ -123,8 +47,8 @@ int read_instr(t_stack *a, t_stack *b)
 	{
 		if (!exe_instr(line, a, b))
 			return (0);
-		print_stack(a, 'a');
-		print_stack(b, 'b');
+		// print_stack(a, 'a');
+		// print_stack(b, 'b');
 		ft_strdel(&line);
 	}
 	return (1);
