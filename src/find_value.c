@@ -6,7 +6,7 @@
 /*   By: wlin <wlin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/07 11:04:53 by wlin              #+#    #+#             */
-/*   Updated: 2017/08/14 13:06:28 by wlin             ###   ########.fr       */
+/*   Updated: 2017/08/15 14:11:51 by wlin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,10 @@ int				find_insert(int n, t_stack *s)
 {
 	int ins_loc;
 
-	ins_loc = find_max(s, s->top, 'I');
-	if (n < find_min(s, s->top, 'V'))
+	ins_loc = find_min(s, s->top, 'I');
+	if (n > find_max(s, s->top, 'V'))
 		return (ins_loc);
-	while (!(n > s->stack[ins_loc]))
+	while (!(n < s->stack[ins_loc]))
 	{
 		if (ins_loc == 0)
 			ins_loc = s->top;

@@ -6,7 +6,7 @@
 /*   By: wlin <wlin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/02 13:48:44 by wlin              #+#    #+#             */
-/*   Updated: 2017/08/14 19:58:28 by wlin             ###   ########.fr       */
+/*   Updated: 2017/08/15 14:56:11 by wlin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,18 +39,24 @@ int main(int argc, char **argv)
 		if (!parse_nparams(&a, &b, argc, argv))
 			return (1);
 	}
-	while (!is_sorted(&a))
-	{
-		if (a.top > 2 && !is_ordered(&a))
-			 quicksort(&a, &b);
-		else
-			bubblesort(&a);
-	}
+	partial_sort(&a, &b);
+	// print_stack(&b, 'b');
 	while (!is_empty(&b))
-	{
-		roto_next(&b, find_max(&b, b.top, 'I'), 'b');
-		move(&b, &a, 'a');
-	}
+		insort(&b, &a, 'a');
+	roto_next(&a, find_min(&a, a.top, 'I'), 'a');
+	print_stack(&a, 'a');
+	// while (!is_sorted(&a))
+	// {
+	// 	if (a.top > 2 && !is_ordered(&a))
+	// 		 quicksort(&a, &b);
+	// 	else
+	// 		bubblesort(&a);
+	// }
+	// while (!is_empty(&b))
+	// {
+	// 	roto_next(&b, find_max(&b, b.top, 'I'), 'b');
+	// 	move(&b, &a, 'a');
+	// }
 	// while (!is_empty(&a))
 	// 	move(&a, &b, 'b');
 	// while (!is_empty(&b))
