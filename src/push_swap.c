@@ -6,7 +6,7 @@
 /*   By: wlin <wlin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/02 13:48:44 by wlin              #+#    #+#             */
-/*   Updated: 2017/08/11 17:15:47 by wlin             ###   ########.fr       */
+/*   Updated: 2017/08/14 19:58:28 by wlin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,19 +41,21 @@ int main(int argc, char **argv)
 	}
 	while (!is_sorted(&a))
 	{
-		if (a.top > 5)
-			quicksort(&a, &b);
+		if (a.top > 2 && !is_ordered(&a))
+			 quicksort(&a, &b);
 		else
-		{
-			
-
-
-			roto_next(&b, find_max(&b, b.top, 'I'), 'b');
-			while (!is_empty(&b))
-				move(&b, &a, 'a');
-			break ;
-		}
+			bubblesort(&a);
 	}
+	while (!is_empty(&b))
+	{
+		roto_next(&b, find_max(&b, b.top, 'I'), 'b');
+		move(&b, &a, 'a');
+	}
+	// while (!is_empty(&a))
+	// 	move(&a, &b, 'b');
+	// while (!is_empty(&b))
+	// 	quicksort(&b, &a);
+	// roto_next(&a, find_min(&a, a.top, 'I'), 'a');
 	//print_stack(&a, 'a');
 	//printf("Sorted: %d\n", is_sorted(&a));
 	return (0);

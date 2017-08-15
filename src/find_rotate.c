@@ -6,7 +6,7 @@
 /*   By: wlin <wlin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/08 14:53:48 by wlin              #+#    #+#             */
-/*   Updated: 2017/08/11 17:15:44 by wlin             ###   ########.fr       */
+/*   Updated: 2017/08/14 12:57:03 by wlin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,29 @@ void	roto_next(t_stack *s, int pos, char c)
 
 // rotate both stack if they can move in same directions
 // before pushing pivot check if stack is ordered
-void	roto_both(t_stack *a, int aloc, t_stack *b, bloc)
+void	roto_both(t_stack *a, int aloc, t_stack *b, int bloc)
 {
-	if (aloc >= (a->top / 2) && bloc >= (b->top / 2))
+	int atop;
+	int btop;
+
+	atop = a->stack[aloc];
+	btop = b->stack[bloc];
+	if (aloc < 1 || bloc < 1)
+		return ;
+	else if (aloc >= (a->top / 2) && bloc >= (b->top / 2))
+	{
+		while (a->stack[a->top] != atop && b->stack[b->top] != btop)
+		{
+			rotate(a, 'r');
+			rotate(b, 'q');
+		}
+	}
+	else if (aloc < (a->top / 2) && bloc < (b->top / 2))
+	{
+		while (a->stack[a->top] != atop && b->stack[b->top] != btop)
+		{
+			rev_rotate(a, 'r');
+			rev_rotate(b, 'q');
+		}
+	}
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   find_next.c                                        :+:      :+:    :+:   */
+/*   find_value.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wlin <wlin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/07 11:04:53 by wlin              #+#    #+#             */
-/*   Updated: 2017/08/11 15:40:02 by wlin             ###   ########.fr       */
+/*   Updated: 2017/08/14 13:06:28 by wlin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ int				find_next(t_stack *s, int pivot, char c)
 	{
 		if (s->stack[top] < pivot)
 			return (c == 'I' ? top : s->stack[top]);
-		else if (s->stack[bot] <= pivot)
+		else if (s->stack[bot] < pivot)
 			return (c == 'I' ? bot : s->stack[bot]);
 		--top;
 		++bot;
@@ -100,4 +100,19 @@ int				find_next(t_stack *s, int pivot, char c)
 	if (c == 'I')
 		return (-1);
 	return (pivot);
+}
+
+//find the index of the value
+int			find_ind(t_stack *s, int nbr)
+{
+	int ind;
+
+	ind = s->top;
+	while (ind > -1)
+	{
+		if (s->stack[ind] == nbr)
+			return (ind);
+		--ind;
+	}
+	return (-1);
 }
