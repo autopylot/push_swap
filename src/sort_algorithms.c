@@ -6,7 +6,7 @@
 /*   By: wlin <wlin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/07 11:02:40 by wlin              #+#    #+#             */
-/*   Updated: 2017/08/15 14:57:16 by wlin             ###   ########.fr       */
+/*   Updated: 2017/08/16 12:54:59 by wlin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,20 @@ void	insort(t_stack *s1, t_stack *s2, char c)
 		move(s1, s2, c);
 	else
 	{
-		ins_pos = find_insert(s1->stack[s1->top], s2);
-		print_stack(s2, 'a');
-		roto_next(s2, ins_pos, c);
-		print_stack(s2, 'a');
+
+		ins_num = find_optimal(s1, s2);
+		//printf("Optimal ind to ins from stack1: %d\n", ins_num);
+		ins_pos = find_insert(s1->stack[ins_num], s2);
+		int s1top = s1->stack[ins_num];
+		int s2top = s2->stack[ins_pos];
+		roto_both(s1, ins_num, s2, ins_pos);
+		if (s1->stack[s1->top] != s1top)
+			roto_next(s1, find_ind(s1, s1top), 'b');
+		if (s2->stack[s2->top] != s2top)
+			roto_next(s2, find_ind(s2, s2top), 'a');
+		// print_stack(s2, 'a');
+		//roto_next(s2, ins_pos, c);
+		// print_stack(s2, 'a');
 		move(s1, s2, c);
 	}
 }

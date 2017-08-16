@@ -6,13 +6,13 @@
 /*   By: wlin <wlin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/15 08:54:18 by wlin              #+#    #+#             */
-/*   Updated: 2017/08/15 14:50:56 by wlin             ###   ########.fr       */
+/*   Updated: 2017/08/16 13:13:11 by wlin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static	void	find_quartiles(t_stack *s, int *arr)
+static	void	find_quart(t_stack *s, int *arr)
 {
 	int *copy;
 
@@ -20,7 +20,8 @@ static	void	find_quartiles(t_stack *s, int *arr)
 	ft_memcpy(copy, s->stack, sizeof(int) * (s->top + 1));
 	arr[1] = find_median(copy, s->top + 1);
 	arr[0] = copy[(s->top + 1) / 4];
-	arr[2] = copy[(((s->top + 1) / 2) + s->top) / 2];
+	arr[2] = copy[(arr[1] + (s->top + 1))/ 2];
+	free(copy);
 }
 
 static	int get_quartile(int num, int *arr)

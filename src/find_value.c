@@ -6,13 +6,12 @@
 /*   By: wlin <wlin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/07 11:04:53 by wlin              #+#    #+#             */
-/*   Updated: 2017/08/15 14:11:51 by wlin             ###   ########.fr       */
+/*   Updated: 2017/08/16 13:07:26 by wlin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-//returns max value or index
 int				find_max(t_stack *s, int len, char c)
 {
 	int max;
@@ -37,7 +36,6 @@ int				find_max(t_stack *s, int len, char c)
 	return (max);
 }
 
-//returns min value or index
 int				find_min(t_stack *s, int len, char c)
 {
 	int min;
@@ -62,7 +60,6 @@ int				find_min(t_stack *s, int len, char c)
 	return (min);
 }
 
-//finds index to insert
 int				find_insert(int n, t_stack *s)
 {
 	int ins_loc;
@@ -80,7 +77,6 @@ int				find_insert(int n, t_stack *s)
 	return (ins_loc);
 }
 
-// find next element smaller than pivot with least steps
 int				find_next(t_stack *s, int pivot, char c)
 {
 	int top;
@@ -102,7 +98,6 @@ int				find_next(t_stack *s, int pivot, char c)
 	return (pivot);
 }
 
-//find the index of the value
 int			find_ind(t_stack *s, int nbr)
 {
 	int ind;
