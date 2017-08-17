@@ -6,7 +6,7 @@
 #    By: wlin <wlin@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/07/28 13:09:11 by wlin              #+#    #+#              #
-#    Updated: 2017/08/10 13:29:42 by wlin             ###   ########.fr        #
+#    Updated: 2017/08/16 11:38:44 by wlin             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,10 @@ CHECKER_FILES = \
 checker \
 stack_op1 \
 stack_op2 \
-validate_args
+parse_input \
+read_instr \
+utility_func \
+find_value
 
 CHECKER_SRC = \
 $(addprefix $(SRC_DIR), $(addsuffix .c, $(CHECKER_FILES)))
@@ -36,13 +39,16 @@ $(addprefix $(BUILD_DIR), $(addsuffix .o, $(CHECKER_FILES)))
 
 PUSH_SWAP_FILES = \
 push_swap \
-sort_algorithms \
-find_next \
-find_rotate \
-find_median \
 stack_op1 \
 stack_op2 \
-validate_args
+parse_input \
+sort_algorithms \
+partial_sort \
+find_optimal \
+find_value \
+find_rotate \
+find_median \
+utility_func
 
 
 PUSH_SWAP_SRC = \
