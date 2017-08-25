@@ -6,15 +6,16 @@
 #    By: wlin <wlin@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/07/28 13:09:11 by wlin              #+#    #+#              #
-#    Updated: 2017/08/16 11:38:44 by wlin             ###   ########.fr        #
+#    Updated: 2017/08/25 13:37:47 by wlin             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CHECKER = checker
 PUSH_SWAP = push_swap
+TEST = test
 
 CC = gcc
-# CFLAGS = -Wall -Wextra -Werror
+#CFLAGS = -Wall -Wextra -Werror
 LIBFT = libft.a
 
 LIB_DIR = libft/
@@ -59,6 +60,8 @@ $(addprefix $(BUILD_DIR), $(addsuffix .o, $(PUSH_SWAP_FILES)))
 
 all:
 
+$(TEST): $(PUSH_SWAP) $(CHECKER)
+
 $(PUSH_SWAP): $(PUSH_SWAP_OBJ) $(LIBFT)
 	@$(CC) $(CFLAGS) $(PUSH_SWAP_OBJ) -o $@ -I libft/libft.h -L./libft -lft
 	@echo "\033[32mExecutable \033[1;32m$(PUSH_SWAP)\033[1;0m\033[32m created.\033[0m"
@@ -81,7 +84,8 @@ clean:
 	@cd libft && $(MAKE) fclean
 
 fclean: clean
-	@rm -f $(NAME)
+	@rm -f $(CHECKER)
+	@rm -f $(PUSH_SWAP)
 
 re: fclean all
 
