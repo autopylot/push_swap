@@ -6,7 +6,7 @@
 /*   By: wlin <wlin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/27 11:28:37 by wlin              #+#    #+#             */
-/*   Updated: 2017/08/16 11:39:00 by wlin             ###   ########.fr       */
+/*   Updated: 2017/08/25 12:04:27 by wlin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void 	print_stack(t_stack *s, char c);
 int		exe_instr(char *instr, t_stack *a, t_stack *b);
 int		read_instr(t_stack *a, t_stack *b);
 int		parse_nparams(t_stack *a, t_stack *b, int argc, char **argv);
-int		parse_nstring(t_stack *a, t_stack *b, char *str);
+int		parse_nstring(t_stack *a, t_stack *b, int argc, char *str);
 
 void 	partial_sort(t_stack *s1, t_stack *s2);
 void	insort(t_stack *s1, t_stack *s2, char c);
