@@ -6,7 +6,7 @@
 /*   By: wlin <wlin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/05 09:05:36 by wlin              #+#    #+#             */
-/*   Updated: 2017/07/28 13:05:30 by wlin             ###   ########.fr       */
+/*   Updated: 2017/08/25 11:25:10 by wlin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,5 +119,6 @@ void			ft_remchr(char *str, char c);
 void			ft_replchr(char *str, char c1, char c2);
 char			*ft_itoa_base(int value, int base);
 int				get_next_line(int const fd, char **line);
+void			ft_arrdel(char **arr);
 
 #endif
