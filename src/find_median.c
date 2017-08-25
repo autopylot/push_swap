@@ -6,14 +6,13 @@
 /*   By: wlin <wlin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/10 12:35:08 by wlin              #+#    #+#             */
-/*   Updated: 2017/08/15 13:46:51 by wlin             ###   ########.fr       */
+/*   Updated: 2017/08/25 11:09:34 by wlin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "push_swap.h"
-#include <stdio.h>
+#include "push_swap.h"
 
-static	void swap_ele(int *a, int *b)
+static	void	swap_ele(int *a, int *b)
 {
 	int t;
 
@@ -22,7 +21,7 @@ static	void swap_ele(int *a, int *b)
 	*b = t;
 }
 
-static	int	partition(int *arr, int low, int high)
+static	int		partition(int *arr, int low, int high)
 {
 	int pivot;
 	int i;
@@ -44,7 +43,7 @@ static	int	partition(int *arr, int low, int high)
 	return (i + 1);
 }
 
-static void qiksort(int *arr, int start, int end)
+static void		qiksort(int *arr, int start, int end)
 {
 	int part;
 
@@ -56,7 +55,7 @@ static void qiksort(int *arr, int start, int end)
 	}
 }
 
-int find_median(int *arr, int len)
+int				find_median(int *arr, int len)
 {
 	qiksort(arr, 0, len - 1);
 	return (arr[len / 2]);

@@ -6,13 +6,13 @@
 /*   By: wlin <wlin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/09 10:36:16 by wlin              #+#    #+#             */
-/*   Updated: 2017/08/14 12:52:00 by wlin             ###   ########.fr       */
+/*   Updated: 2017/08/25 12:50:36 by wlin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int exe_instr(char *instr, t_stack *a, t_stack *b)
+int	exe_instr(char *instr, t_stack *a, t_stack *b)
 {
 	if (!ft_strcmp(instr, "ss"))
 		return (exe_instr("sa", a, b) + exe_instr("sb", a, b));
@@ -24,13 +24,13 @@ int exe_instr(char *instr, t_stack *a, t_stack *b)
 		return (move(b, a, 'q'));
 	else if (!ft_strcmp(instr, "pb"))
 		return (move(a, b, 'q'));
-	else if  (!ft_strcmp(instr, "rr"))
+	else if (!ft_strcmp(instr, "rr"))
 		return (exe_instr("ra", a, b) + exe_instr("rb", a, b));
 	else if (!ft_strcmp(instr, "ra"))
 		return (rotate(a, 'q'));
 	else if (!ft_strcmp(instr, "rb"))
 		return (rotate(b, 'q'));
-	else if  (!ft_strcmp(instr, "rrr"))
+	else if (!ft_strcmp(instr, "rrr"))
 		return (exe_instr("rra", a, b) + exe_instr("rrb", a, b));
 	else if (!ft_strcmp(instr, "rra"))
 		return (rev_rotate(a, 'q'));
@@ -39,7 +39,7 @@ int exe_instr(char *instr, t_stack *a, t_stack *b)
 	return (0);
 }
 
-int read_instr(t_stack *a, t_stack *b)
+int	read_instr(t_stack *a, t_stack *b)
 {
 	char *line;
 
@@ -47,8 +47,6 @@ int read_instr(t_stack *a, t_stack *b)
 	{
 		if (!exe_instr(line, a, b))
 			return (0);
-		// print_stack(a, 'a');
-		// print_stack(b, 'b');
 		ft_strdel(&line);
 	}
 	return (1);

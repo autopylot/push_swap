@@ -6,14 +6,13 @@
 /*   By: wlin <wlin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/11 15:50:30 by wlin              #+#    #+#             */
-/*   Updated: 2017/08/11 16:00:07 by wlin             ###   ########.fr       */
+/*   Updated: 2017/08/25 12:05:17 by wlin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-//check if stack is ordered and just needed to be rotated
-int is_ordered(t_stack *s)
+int		is_ordered(t_stack *s)
 {
 	int min_loc;
 	int i;
@@ -40,7 +39,7 @@ int is_ordered(t_stack *s)
 	return (1);
 }
 
-int is_sorted(t_stack *s)
+int		is_sorted(t_stack *s)
 {
 	int i;
 
@@ -56,9 +55,11 @@ int is_sorted(t_stack *s)
 	return (1);
 }
 
-void print_stack(t_stack *s, char c)
+void	print_stack(t_stack *s, char c)
 {
-	int i = s->top;
+	int i;
+
+	i = s->top;
 	while (i > -1)
 	{
 		printf("[%d] %d\n", i, s->stack[i]);
@@ -68,7 +69,7 @@ void print_stack(t_stack *s, char c)
 	}
 }
 
-int	ft_error(char const *s, int fd)
+int		ft_error(char const *s, int fd)
 {
 	ft_putstr_fd(s, fd);
 	write(fd, "\n", 1);

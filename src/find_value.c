@@ -6,7 +6,7 @@
 /*   By: wlin <wlin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/07 11:04:53 by wlin              #+#    #+#             */
-/*   Updated: 2017/08/16 13:07:26 by wlin             ###   ########.fr       */
+/*   Updated: 2017/08/25 11:11:55 by wlin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ int				find_next(t_stack *s, int pivot, char c)
 	return (pivot);
 }
 
-int			find_ind(t_stack *s, int nbr)
+int				find_ind(t_stack *s, int nbr)
 {
 	int ind;
 

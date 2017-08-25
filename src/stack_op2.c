@@ -6,13 +6,13 @@
 /*   By: wlin <wlin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/26 14:43:58 by wlin              #+#    #+#             */
-/*   Updated: 2017/08/09 13:01:42 by wlin             ###   ########.fr       */
+/*   Updated: 2017/08/25 11:51:15 by wlin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	move(t_stack *a, t_stack *b, char c)
+int		move(t_stack *a, t_stack *b, char c)
 {
 	if (a->top > -1)
 	{
@@ -25,7 +25,7 @@ int	move(t_stack *a, t_stack *b, char c)
 	return (1);
 }
 
-int	rotate(t_stack *s, char c)
+int		rotate(t_stack *s, char c)
 {
 	int i;
 	int tmp;
@@ -47,7 +47,7 @@ int	rotate(t_stack *s, char c)
 	return (1);
 }
 
-int rev_rotate(t_stack *s, char c)
+int		rev_rotate(t_stack *s, char c)
 {
 	int i;
 	int tmp;

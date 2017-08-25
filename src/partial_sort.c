@@ -6,25 +6,25 @@
 /*   By: wlin <wlin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/15 08:54:18 by wlin              #+#    #+#             */
-/*   Updated: 2017/08/16 13:13:11 by wlin             ###   ########.fr       */
+/*   Updated: 2017/08/25 11:30:29 by wlin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static	void	find_quart(t_stack *s, int *arr)
+static	void	find_iqrange(t_stack *s, int *arr)
 {
-	int *copy;
+	int			*copy;
 
 	copy = (int*)malloc(sizeof(int) * (s->top + 1));
 	ft_memcpy(copy, s->stack, sizeof(int) * (s->top + 1));
 	arr[1] = find_median(copy, s->top + 1);
 	arr[0] = copy[(s->top + 1) / 4];
-	arr[2] = copy[(arr[1] + (s->top + 1))/ 2];
+	arr[2] = copy[(((s->top + 1) / 2) + s->top) / 2];
 	free(copy);
 }
 
-static	int get_quartile(int num, int *arr)
+static	int		get_iq(int num, int *arr)
 {
 	if (num <= arr[0])
 		return (1);
@@ -36,42 +36,39 @@ static	int get_quartile(int num, int *arr)
 		return (4);
 }
 
-// maintains the invariant that the biggest quartile has to be ontop
-static	void roto_partial(t_stack *s1, int *part, char c)
+static	void	roto_partial(t_stack *s1, int *arr, char c)
 {
-	int q1;
-	int q2;
+	int			q1;
+	int			q2;
 
-	q1 = get_quartile(s1->stack[s1->top], part);
-	q2 = get_quartile(s1->stack[s1->top - 1], part);
+	q1 = get_iq(s1->stack[s1->top], arr);
+	q2 = get_iq(s1->stack[s1->top - 1], arr);
 	if (s1->top < 1)
 		return ;
 	else if (q1 < q2)
 		rotate(s1, c);
 }
 
-//partial sort a into b
-void partial_sort(t_stack *s1, t_stack *s2)
+void			partial_sort(t_stack *s1, t_stack *s2)
 {
-	int arr_qt[3];
-	int len;
-	int *copy;
+	int			iqrange[3];
+	int			len;
 
-	find_quartiles(s1, arr_qt);
+	find_iqrange(s1, iqrange);
 	len = s1->top + 1;
 	while (len-- > -1)
 	{
-		if (s1->stack[s1->top] > arr_qt[0] && s1->stack[s1->top] <= arr_qt[2])
+		if (s1->stack[s1->top] > iqrange[0] && s1->stack[s1->top] <= iqrange[2])
 		{
-			move(s1, s2 , 'b');
-			roto_partial(s2, arr_qt, 'b');
+			move(s1, s2, 'b');
+			roto_partial(s2, iqrange, 'b');
 		}
 		else
 			rotate(s1, 'a');
 	}
 	while (!is_empty(s1))
 	{
-		move(s1, s2 , 'b');
-		roto_partial(s2, arr_qt, 'b');
+		move(s1, s2, 'b');
+		roto_partial(s2, iqrange, 'b');
 	}
 }

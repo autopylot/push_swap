@@ -6,7 +6,7 @@
 /*   By: wlin <wlin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/08 14:53:48 by wlin              #+#    #+#             */
-/*   Updated: 2017/08/16 13:05:49 by wlin             ###   ########.fr       */
+/*   Updated: 2017/08/25 11:11:13 by wlin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@ void	swap_top(t_stack *s, char c)
 	}
 }
 
-//rotates next num to be sorted to the top with least moves
+/*
+** rotate pos in stack to top
+*/
+
 void	roto_next(t_stack *s, int pos, char c)
 {
 	int next;
@@ -36,6 +39,10 @@ void	roto_next(t_stack *s, int pos, char c)
 		while (s->stack[s->top] != next)
 			rev_rotate(s, c);
 }
+
+/*
+** rotate both stacks in same direction if possible
+*/
 
 void	roto_both(t_stack *a, int aloc, t_stack *b, int bloc)
 {

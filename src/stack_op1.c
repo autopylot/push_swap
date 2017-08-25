@@ -6,7 +6,7 @@
 /*   By: wlin <wlin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/26 14:43:58 by wlin              #+#    #+#             */
-/*   Updated: 2017/08/11 13:37:29 by wlin             ###   ########.fr       */
+/*   Updated: 2017/08/25 11:50:25 by wlin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int		pop(t_stack *s)
 	return (c);
 }
 
-int	swap(t_stack *s, char c)
+int		swap(t_stack *s, char c)
 {
 	int tmp;
 

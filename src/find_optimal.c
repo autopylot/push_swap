@@ -6,13 +6,13 @@
 /*   By: wlin <wlin@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/14 14:37:59 by wlin              #+#    #+#             */
-/*   Updated: 2017/08/16 12:56:08 by wlin             ###   ########.fr       */
+/*   Updated: 2017/08/25 11:10:38 by wlin             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	sum_moves(int *tab)
+static	int		sum_moves(int *tab)
 {
 	int i;
 	int total;
@@ -24,7 +24,7 @@ int	sum_moves(int *tab)
 	return (total);
 }
 
-void calc_short(int *tab)
+static	void	calc_short(int *tab)
 {
 	if (tab[0] <= tab[1])
 		tab[1] = 0;
@@ -48,7 +48,7 @@ void calc_short(int *tab)
 	}
 }
 
-int		*calc_moves(t_stack *s1, t_stack *s2, int ind)
+static	int		*calc_moves(t_stack *s1, t_stack *s2, int ind)
 {
 	int i;
 	int *tab;
@@ -69,19 +69,14 @@ int		*calc_moves(t_stack *s1, t_stack *s2, int ind)
 	}
 	calc_short(tab);
 	tab[6] = ind;
-	// for (int i = 0; i < 7; ++i)
-	// 	printf(" %d ", tab[i]);
-	// printf("\n");
 	return (tab);
 }
 
-//find the value that takes the least amount of steps to sort while holding the invariant true
-//return the index of the best element to move
-int	find_optimal(t_stack *s1, t_stack *s2)
+int				find_optimal(t_stack *s1, t_stack *s2)
 {
+	int ind;
 	int *min;
 	int *temp;
-	int ind;
 
 	ind = s1->top;
 	min = calc_moves(s1, s2, ind);
@@ -96,8 +91,7 @@ int	find_optimal(t_stack *s1, t_stack *s2)
 		else
 			free(temp);
 	}
-	// for (int i = 0; i < 7; ++i)
-	// 	printf(" %d ", min[i]);
-	// printf("\n");
-	return (min[6]);
+	ind = min[6];
+	free(min);
+	return (ind);
 }
